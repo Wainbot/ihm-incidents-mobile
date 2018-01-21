@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Visualisation des incidents de réseau mobile</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/tether/dist/css/tether.min.css">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- JS -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkrQ2eB8jKCu2Wo9en-dsqKIBb8rIeXMg&callback=initMap"></script>
+    <script src="main.js"></script>
+</head>
+<body id="app">
+    <!--
+    <nav class="navbar">
+        <h1 class="navbar-brand mb-0">Incidents réseaux mobile</h1>
+    </nav>
+    -->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="map" class="bloc-maps"></div>
+            <div class="bloc-parametres">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">Paramètres de visualisation</h4>
+                        <p class="card-text text-muted" style="font-size: 10pt;">Paramétrez votre visualisation des incidents sur les réseaux mobile.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                <input type="checkbox" class="custom-control-input" onchange="getLocation(this)">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Localisation</span>
+                            </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                <input type="checkbox" class="custom-control-input" onchange="getNotifications(this)">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Notifications</span>
+                            </label>
+                        </li>
+                    </ul>                
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

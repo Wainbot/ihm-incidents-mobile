@@ -1,0 +1,88 @@
+/*
+color1 : #6173f4
+*/
+
+body {
+    color: #1a232c;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: #1a232c;
+    color: #FFF;
+    padding: 20px 30px;
+    border-bottom: 5px solid #6173f4;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.navbar-toggler {
+    cursor: pointer;
+    font-size: 40px;
+    color: #FFF;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:active {
+    color: #6173f4;
+}
+
+.bloc-parametres {
+    width: 300px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.bloc-parametres .card {
+    color: #1a232c;
+    border-top: 3px solid #6173f4;
+    border-bottom: 3px solid #6173f4;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.list-group-flush .list-group-item {
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.bloc-maps {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #6173f4;
+}
+
+.btn.btn-outline-primary {
+    cursor: pointer;
+    color: #6173f4;
+    border-color: #6173f4;
+}
+
+.btn.btn-outline-primary:hover {
+    color: #FFF;
+    background-color: #6173f4;
+    border-color: #6173f4;
+}
+
+.custom-control-input:checked~.custom-control-indicator {
+    background-color: #6173f4;
+}
+
+.fa-spin {
+    color: #FFF;
+    font-size: 50pt;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    position: fixed;
+    transform: translate(-25px, -25px);
+    width: 50px;
+    height: 50px;
+}
