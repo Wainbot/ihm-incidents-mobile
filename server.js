@@ -7,4 +7,4 @@ app.get('/', function(req, res) {
     res.render('index.html');
 });
 
-app.listen(process.env.PORT || 3000, '127.0.0.1');
+app.listen(8080);
