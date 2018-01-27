@@ -126,6 +126,10 @@ function getLocation(value) {
  */
 function getNotifications(value) {
     console.log('Active Notifications');
+    Push.config({
+        serviceWorker: './bower_components/push.js/bin/serviceWorker.min.js'
+    });
+
     if (value.checked) {
         Push.create("Incidents mobiles", {
             body: "Vous serez maintenant avertis des incidents de réseau mobile proche de vous !",
