@@ -4,7 +4,8 @@
   "description": "My app description",
   "scripts": {
     "deploy": "bower install && npm test && git push heroku master",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "express": "^4.13.4",

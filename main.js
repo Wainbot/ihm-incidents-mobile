@@ -126,25 +126,37 @@ function getLocation(value) {
  */
 function getNotifications(value) {
     console.log('Active Notifications');
-    Push.create("Incidents mobiles", {
-        body: "Vous serez maintenant avertis des incidents de réseau mobile proche de vous !",
-        icon: 'user.svg',
-        timeout: 5000,
-        onClick: function () {
-            window.focus();
-            this.close();
-        }
-    });
-
-    setTimeout(function() {
-        Push.create("Incident signalé !", {
-            body: "Un incident a été signalé proche de vous.",
+    if (value.checked) {
+        Push.create("Incidents mobiles", {
+            body: "Vous serez maintenant avertis des incidents de réseau mobile proche de vous !",
             icon: 'user.svg',
-            timeout: 10000,
+            timeout: 5000,
             onClick: function () {
                 window.focus();
                 this.close();
             }
         });
-    }, 5000);
+
+        setTimeout(function() {
+            Push.create("Incident signalé !", {
+                body: "Un incident a été signalé proche de vous.",
+                icon: 'user.svg',
+                timeout: 10000,
+                onClick: function () {
+                    window.focus();
+                    this.close();
+                }
+            });
+        }, 5000);
+    } else {
+        Push.create("Incidents mobiles", {
+            body: "Les notifications sont maintenant désactivées !",
+            icon: 'user.svg',
+            timeout: 5000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
+    }
 }
