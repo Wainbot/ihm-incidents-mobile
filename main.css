@@ -32,8 +32,8 @@ body {
 .bloc-parametres {
     width: 300px;
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 220px;
+    right: 10px;
 }
 
 .bloc-parametres .card {
@@ -45,12 +45,60 @@ body {
     box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 
+.bloc-legende {
+    width: 300px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.bloc-legende .card {
+    color: #1a232c;
+    border-top: 3px solid #6173f4;
+    border-bottom: 3px solid #6173f4;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.bloc-infos {
+    width: 300px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.bloc-infos .card {
+    color: #1a232c;
+    border-top: 3px solid #6173f4;
+    border-bottom: 3px solid #6173f4;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.bloc-infos .status-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: grey;
+    display: inline-block;
+}
+
+.bloc-infos li span {
+    font-weight: bolder;
+    color: #6173f4;
+}
+.bloc-infos li span {
+    font-weight: bolder;
+    color: #6173f4;
+}
+
 .list-group-flush .list-group-item {
     border-top: 1px solid rgba(0,0,0,.125);
 }
 
 .bloc-maps {
-    z-index: -1;
+    z-index: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -75,14 +123,25 @@ body {
     background-color: #6173f4;
 }
 
-.fa-spin {
+.loader {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a232c;
+    color: #6173f4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    animation: 5s ease-in;
+    opacity: 0.8;
+    z-index: 9999;
+}
+
+.loader .loading {
+    display: block;
     color: #FFF;
-    font-size: 50pt;
+    font-size: 20pt;
     top: 50%;
     left: 50%;
-    text-align: center;
     position: fixed;
-    transform: translate(-25px, -25px);
-    width: 50px;
-    height: 50px;
+    transform: translate(-50%, -50%);
 }

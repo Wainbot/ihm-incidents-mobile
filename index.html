@@ -18,6 +18,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/tether/dist/js/tether.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/push.js/bin/push.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkrQ2eB8jKCu2Wo9en-dsqKIBb8rIeXMg&callback=initMap"></script>
     <script src="main.js"></script>
 </head>
@@ -27,6 +28,11 @@
         <h1 class="navbar-brand mb-0">Incidents réseaux mobile</h1>
     </nav>
     -->
+    <div class="loader" style="display: none;">
+        <div class="loading">
+            <i class="fa  fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div id="map" class="bloc-maps"></div>
@@ -44,7 +50,7 @@
                                 <span class="custom-control-description">Localisation</span>
                             </label>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item notifications-bloc" style="display: none;">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                                 <input type="checkbox" class="custom-control-input" onchange="getNotifications(this)">
                                 <span class="custom-control-indicator"></span>
@@ -52,6 +58,48 @@
                             </label>
                         </li>
                     </ul>                
+                </div>
+            </div>
+            <div class="bloc-legende">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">Légende</h4>
+                        <p class="card-text text-muted" style="font-size: 10pt;">Repérez-vous sur la carte.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <img src="user.svg" alt="">
+                            &nbsp;Vous
+                        </li>
+                        <li class="list-group-item">
+                            <img src="panne.svg" alt="">
+                            &nbsp;Incident
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bloc-infos" style="display: none;">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title"></h4>
+                        <p class="card-text text-muted" style="font-size: 10pt;">Voici les informations sur l'incident.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Signalé par&nbsp;<span class="signale-par"></span>
+                        </li>
+                        <li class="list-group-item">
+                            Signalé&nbsp;<span class="signale-nb"></span>&nbsp;fois
+                        </li>
+                        <li class="list-group-item">
+                            <div class="status-color"></div>
+                            &nbsp;
+                            <div class="status"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="description"></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
