@@ -8,6 +8,7 @@
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
+    "bower": "^1.8.2",
     "express": "^4.13.4",
     "express-validator": "^2.20.4"
   },
