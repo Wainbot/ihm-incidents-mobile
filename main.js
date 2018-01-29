@@ -114,10 +114,12 @@ function getLocation(value) {
             initMap(locationInfos.coords.longitude, locationInfos.coords.latitude, 15);
             $('.loader').css('display', 'none');
             $('.notifications-bloc').css('display', 'block');
+            $('.incident-bloc').css('display', 'block');
         });
     } else {
         initMap();
         $('.notifications-bloc').css('display', 'none');
+        $('.incident-bloc').css('display', 'none');
     }
 }
 
