@@ -23,11 +23,6 @@
     <script src="main.js"></script>
 </head>
 <body id="app">
-    <!--
-    <nav class="navbar">
-        <h1 class="navbar-brand mb-0">Incidents réseaux mobile</h1>
-    </nav>
-    -->
     <div class="loader" style="display: none;">
         <div class="loading">
             <i class="fa  fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
@@ -63,13 +58,36 @@
             <div class="bloc-legende">
                 <div class="card">
                     <div class="card-block">
-                        <h4 class="card-title">Légende</h4>
-                        <p class="card-text text-muted" style="font-size: 10pt;">Repérez-vous sur la carte.</p>
+                        <h4 class="card-title">Élements de visualisation</h4>
+                        <p class="card-text text-muted" style="font-size: 10pt;">Repérez-vous sur la carte et filtrez les incidents.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <img src="panne.svg" alt="">
-                            &nbsp;Incident
+                        <li class="list-group-item check1" style="font-size: 11pt;">
+                            <label for="check-1" style="cursor: pointer;">
+                                <img src="panne1.svg" alt="">
+                                &nbsp;Incident non résolu
+                                <input id="check-1" type="checkbox" style="display: none;" onchange="checkChange()" checked>
+                                <span class="btn-afficher afficher1" style="display: none;">Afficher</span>
+                                <span class="btn-cacher cacher1">Cacher</span>
+                            </label>
+                        </li>
+                        <li class="list-group-item check2" style="font-size: 11pt;">
+                            <label for="check-2" style="cursor: pointer;">
+                                <img src="panne2.svg" alt="">
+                                &nbsp;Incident en cours de résolution
+                                <input id="check-2" type="checkbox" style="display: none;" onchange="checkChange()" checked>
+                                <span class="btn-afficher afficher2" style="display: none;">Afficher</span>
+                                <span class="btn-cacher cacher2">Cacher</span>
+                            </label>
+                        </li>
+                        <li class="list-group-item check3" style="font-size: 11pt;">
+                            <label for="check-3" style="cursor: pointer;">
+                                <img src="panne3.svg" alt="">
+                                &nbsp;Incident résolu
+                                <input id="check-3" type="checkbox" style="display: none;" onchange="checkChange()" checked>
+                                <span class="btn-afficher afficher3" style="display: none;">Afficher</span>
+                                <span class="btn-cacher cacher3">Cacher</span>
+                            </label>
                         </li>
                         <li class="list-group-item incident-bloc" style="display: none;">
                             <img src="user.svg" alt="">

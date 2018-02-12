@@ -1,6 +1,11 @@
 var locationIsActive = false;
 var locationInfos = {};
 var map;
+var check = [];
+check[1] = true;
+check[2] = true;
+check[3] = true;
+var markers = [];
 
 /**
  * GOOGLE MAP FRANCE
@@ -43,14 +48,14 @@ function initMap(longitude, latitude, zoom) {
 }
 
 window.eqfeed_callback = function(results) {
-    for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates;
-        var latLng = new google.maps.LatLng(coords[1],coords[0]);
-        new google.maps.Marker({
-            position: latLng,
-            map: map
-        });
-    }
+    // for (var i = 0; i < results.features.length; i++) {
+    //     var coords = results.features[i].geometry.coordinates;
+    //     var latLng = new google.maps.LatLng(coords[1],coords[0]);
+    //     new google.maps.Marker({
+    //         position: latLng,
+    //         map: map
+    //     });
+    // }
 };
 
 function getRandomInRange(from, to, fixed) {
@@ -59,7 +64,7 @@ function getRandomInRange(from, to, fixed) {
 
 function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte) {
     for (var i = 0; i < qte; i++) {
-        var marker = new google.maps.Marker({
+        var optionsMarker = {
             position: new google.maps.LatLng(getRandomInRange(latitude-deltaX, latitude+deltaX, 9), getRandomInRange(longitude-deltaY, longitude+deltaY, 9)),
             map: map,
             animation: google.maps.Animation.DROP,
@@ -71,12 +76,16 @@ function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte) {
                 status: Math.round((Math.random()*2)+1)
             },
             icon: {
-                url: 'panne.svg',
                 size: new google.maps.Size(24, 24),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(0, 0)
             }
-        });
+        };
+
+        optionsMarker.icon.url = 'panne' + optionsMarker.infos.status + '.svg';
+
+        var marker = new google.maps.Marker(optionsMarker);
+        markers.push(marker);
 
         google.maps.event.addListener(marker, 'mouseover', function() {
             $('.bloc-infos').css('display', 'block');
@@ -93,7 +102,7 @@ function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte) {
                 $('.bloc-infos .status-color').css('background', 'green');
                 $('.bloc-infos .status').html('Résolu');
             }
-            $('.bloc-infos .description').html("Problème de réseau mobile chez tous les opérateurs. Suite aux intempéries l'antenne est endommagé.");
+            $('.bloc-infos .description').html("Problème de réseau mobile chez tous les opérateurs. Suite aux intempéries l'antenne est endommagée.");
         });
         google.maps.event.addListener(marker, 'mouseout', function() {
             $('.bloc-infos').css('display', 'none');
@@ -115,11 +124,13 @@ function getLocation(value) {
             $('.loader').css('display', 'none');
             $('.notifications-bloc').css('display', 'block');
             $('.incident-bloc').css('display', 'block');
+            $('.bloc-parametres').css('top', '380px');
         });
     } else {
         initMap();
         $('.notifications-bloc').css('display', 'none');
         $('.incident-bloc').css('display', 'none');
+        $('.bloc-parametres').css('top', '335px');
     }
 }
 
@@ -164,5 +175,43 @@ function getNotifications(value) {
                 this.close();
             }
         });
+    }
+}
+
+function checkChange() {
+    check[1] = document.querySelector('#check-1').checked;
+    check[2] = document.querySelector('#check-2').checked;
+    check[3] = document.querySelector('#check-3').checked;
+
+    if (check[1]) {
+        document.querySelector('.afficher1').style.display = 'none';
+        document.querySelector('.cacher1').style.display = 'block';
+    } else {
+        document.querySelector('.afficher1').style.display = 'block';
+        document.querySelector('.cacher1').style.display = 'none';
+    }
+
+    if (check[2]) {
+        document.querySelector('.afficher2').style.display = 'none';
+        document.querySelector('.cacher2').style.display = 'block';
+    } else {
+        document.querySelector('.afficher2').style.display = 'block';
+        document.querySelector('.cacher2').style.display = 'none';
+    }
+
+    if (check[3]) {
+        document.querySelector('.afficher3').style.display = 'none';
+        document.querySelector('.cacher3').style.display = 'block';
+    } else {
+        document.querySelector('.afficher3').style.display = 'block';
+        document.querySelector('.cacher3').style.display = 'none';
+    }
+
+    for (var i = 0; i < markers.length; i++) {
+        if (check[markers[i].infos.status]) {
+            markers[i].setMap(map);
+        } else {
+            markers[i].setMap(null);
+        }
     }
 }
