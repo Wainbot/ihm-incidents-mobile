@@ -37,9 +37,10 @@ function initMap(longitude, latitude, zoom) {
             }
         });
 
-        chargeRandomMarkers(latitude, longitude, 0.008, 0.005, 3);
+        chargeRandomMarkers(latitude, longitude, 0.008, 0.005, 10, false);
     } else {
-        chargeRandomMarkers(latitude, longitude, 3, 3, 15);
+        // chargeRandomMarkers(latitude, longitude, 3, 3, 15);
+        chargeRandomMarkers(latitude, longitude, 3, 3, 100, true);
     }
 
     var script = document.createElement('script');
@@ -62,7 +63,7 @@ function getRandomInRange(from, to, fixed) {
     return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
 }
 
-function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte) {
+function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte, global) {
     for (var i = 0; i < qte; i++) {
         var optionsMarker = {
             position: new google.maps.LatLng(getRandomInRange(latitude-deltaX, latitude+deltaX, 9), getRandomInRange(longitude-deltaY, longitude+deltaY, 9)),
@@ -78,9 +79,53 @@ function chargeRandomMarkers(latitude, longitude, deltaX, deltaY, qte) {
             icon: {
                 size: new google.maps.Size(24, 24),
                 origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0)
+                anchor: new google.maps.Point(12, 24)
             }
         };
+
+        if (global) {
+            // for paris
+            if (i % 7 === 1) {
+                var tlongitude = 2.333333;
+                var tlatitude = 48.866667;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+
+            // for bordeaux
+            if (i % 7 === 2) {
+                var tlongitude = -0.57918;
+                var tlatitude = 44.837789;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+
+            // for lyon
+            if (i % 7 === 3) {
+                var tlongitude = 4.850000;
+                var tlatitude = 45.750000;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+
+            // for lille
+            if (i % 7 === 4) {
+                var tlongitude = 3.066667;
+                var tlatitude = 50.633333;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+
+            // for paca
+            if (i % 7 === 5) {
+                var tlongitude = 6.9167;
+                var tlatitude = 43.6667;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+
+            // for bretagne
+            if (i % 7 === 6) {
+                var tlongitude = -1.6742900;
+                var tlatitude = 48.1119800;
+                optionsMarker.position = new google.maps.LatLng(getRandomInRange(tlatitude - 0.08, tlatitude + 0.08, 9), getRandomInRange(tlongitude - 0.08, tlongitude + 0.08, 9));
+            }
+        }
 
         optionsMarker.icon.url = 'panne' + optionsMarker.infos.status + '.svg';
 
