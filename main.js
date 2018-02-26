@@ -203,7 +203,7 @@ function getNotifications(value) {
             Push.create("Incident signalé !", {
                 body: "Un incident a été signalé proche de vous.",
                 icon: 'user.svg',
-                timeout: 10000,
+                timeout: 15000,
                 onClick: function () {
                     window.focus();
                     this.close();
